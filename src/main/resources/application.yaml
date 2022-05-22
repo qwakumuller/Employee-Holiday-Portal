@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: TravelPackagesAPI
+  datasource:
+      url: ${DB_URL:jdbc:postgresql://104.154.113.225:5432/postgres}
+      username: ${DB_USERNAME:postgres}
+      password: ${DB_PASSWORD:password123}
+      driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+jwt:
+  secret: token_secret
+  expiry:  3600000
+
+
+server:
+  port: 8080
+
+api:
+  config:
+    api2-url: ${GRAFANA_URL}
+
+react:
+  config:
+    url: ${REACT_URL}
+
+email:
+  config:
+    url: ${EMAIL_URL}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus"
+
+       
+
