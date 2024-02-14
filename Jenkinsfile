@@ -62,19 +62,18 @@ pipeline {
         sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./Kubernetes/deployment.yml'
         sh 'cat ./Kubernetes/deployment.yml'
         sh 'echo "Starting Deployment to Kubernetes"'
-                        sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./Kubernetes/deployment.yml'
-                        sh 'cat ./Kubernetes/deployment.yml'
-                        step([$class: 'KubernetesEngineBuilder',
-                                              projectId: 'intrepid-memory-344002',
-                                              clusterName: 'intrepid-memory-344002-gke',
-                                              zone: 'us-central1',
-                                              manifestPattern: 'Kubernetes/',
-                                              credentialsId: 'intrepid-memory-344002',
-                                              verifyDeployments: true
-                                        ])
+        sh 'sed -i "s/%TAG%/$BUILD_NUMBER/g" ./Kubernetes/deployment.yml'
+        sh 'cat ./Kubernetes/deployment.yml'
+        step([$class: 'KubernetesEngineBuilder',
+                                                      projectId: 'intrepid-memory-344002',
+                                                      clusterName: 'intrepid-memory-344002-gke',
+                                                      zone: 'us-central1',
+                                                      manifestPattern: 'Kubernetes/',
+                                                      credentialsId: 'intrepid-memory-344002',
+                                                      verifyDeployments: true
+                                                ])
       }
     }
-
 
   }
   environment {
